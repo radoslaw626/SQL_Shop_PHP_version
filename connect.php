@@ -2,6 +2,6 @@
 $host="localhost";
 $dbUser="root";
 $dbPassword="";
-$dbName="logowanie";
+$dbName="usersdb";
 ?>
 

@@ -16,8 +16,8 @@ if(!isset($_POST['login']) || !isset($_POST['password']))
 <?php
 session_start();
 require_once "connect.php";
-$polaczenie=new mysqli($host,$dbUser,$dbPassword,$dbName);
-if($polaczenie->connect_errno!=0)
+$connection=new mysqli($host,$dbUser,$dbPassword,$dbName);
+if($connection->connect_errno!=0)
 {
     echo "Error";
 }
@@ -26,9 +26,9 @@ else {
     $password=$_POST["password"];
     $login =htmlentities($login,ENT_QUOTES, 'UTF-8');
     $password =htmlentities($password,ENT_QUOTES, 'UTF-8');
-    if($check =@$polaczenie->query(sprintf("select * from users where login ='%s' and password ='%s'",
-    mysqli_real_escape_string($polaczenie,$login),
-    mysqli_real_escape_string($polaczenie,$password))))
+    if($check =@$connection->query(sprintf("select * from users where login ='%s' and password ='%s'",
+    mysqli_real_escape_string($connection,$login),
+    mysqli_real_escape_string($connection,$password))))
     {
         $countRows=$check->num_rows;
         if($countRows>0) {
@@ -41,11 +41,11 @@ else {
             header('Location: shop.php');
         }
         else {
-        $_SESSION['error'] = '<span style ="color:red"> <b>Wrong login or password!</b>';
+        $_SESSION['error'] = '<span style ="color:#ff0000"> <b>Wrong login or password!</b>';
         header('Location: index.php');
         }
     }
-    $polaczenie->close();
+    $connection->close();
 }
 ?>
 </form>
