@@ -8,7 +8,7 @@ if(isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == true) {
 <html lang="pl">
 
 <head>
-<title> Grocery Shopping Online </title>
+<title> Welcome to Grocery Shopping Online! </title>
 </head>
 <body>
 <h1>Log in</h1>
